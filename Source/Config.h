@@ -7,7 +7,7 @@
 #define MAX_NUMBER_OF_RECORDS 100000
 
 #ifdef SIMULATION
-#define LOG_DIRECTORY "/Users/Temp"
+#define LOG_DIRECTORY "./Logs"
 #else
 #define LOG_DIRECTORY "???"
 #endif

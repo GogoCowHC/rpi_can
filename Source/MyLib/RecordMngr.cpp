@@ -144,6 +144,7 @@ bool RecordMngr::writeCANFile()
 {
     isCANWriting = true;
 
+    ensureDirectoryExists(LOG_DIRECTORY);
     std::string filename = generateFilename(LOG_DIRECTORY, LOG_FILE_CAN_EXT);
     
     std::ofstream file(filename);
@@ -196,6 +197,7 @@ bool RecordMngr::writeGPSFile()
 {
     isCANWriting = true;
 
+    ensureDirectoryExists(LOG_DIRECTORY);
     std::string filename = generateFilename(LOG_DIRECTORY, LOG_FILE_GPS_EXT);
     
     std::ofstream file(filename);

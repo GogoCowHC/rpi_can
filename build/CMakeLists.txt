@@ -76,13 +76,14 @@ if(CMAKE_EXPORT_COMPILE_COMMANDS STREQUAL "")
 endif()
 
 # Set the output directory for executables
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/rpi_can)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/rpi_can/build)
 
 # Set the output directory for shared libraries
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/rpi_can)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/rpi_can/build)
 
 # Set the output directory for static libraries
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/rpi_can)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/rpi_can/build)
+
 
 # Print CMake version
 message(STATUS "CMake version: ${CMAKE_VERSION}")

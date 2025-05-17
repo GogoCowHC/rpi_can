@@ -1,3 +1,5 @@
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -84,4 +86,22 @@ std::string generateFilename(const std::string& directory, const std::string& ex
 {
     std::string filename = directory + "/" + getCurrentDateString("_") + "-" + getCurrentTimeString("_") + extension;
     return filename;
+}
+
+
+void ensureDirectoryExists(const std::string& directory) 
+{
+    struct stat info;
+    if (stat(directory.c_str(), &info) != 0) {
+        // Directory does not exist, create it
+        if (mkdir(directory.c_str(), 0777) == 0) {
+            std::cout << "Directory created: " << directory << std::endl;
+        } else {
+            std::cerr << "Failed to create directory: " << directory << std::endl;
+        }
+    } else if (!(info.st_mode & S_IFDIR)) {
+        std::cerr << "Path exists but is not a directory: " << directory << std::endl;
+    } else {
+        std::cout << "Directory already exists: " << directory << std::endl;
+    }
 }

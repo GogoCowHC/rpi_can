@@ -14,4 +14,6 @@ std::string getCurrentDateString(const std::string& separator);
 
 std::string generateFilename(const std::string& directory, const std::string& extension);
 
+void ensureDirectoryExists(const std::string& directory);
+
 #endif //_UTILITIES_H_
