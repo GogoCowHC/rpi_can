@@ -25,7 +25,8 @@ void rpi_receive_GPS_data(RecordMngr& recordMngr);
 int main()
 {
     RecordMngr& recordMngr = RecordMngr::getInstance();
-    recordMngr.init(MAX_NUMBER_OF_RECORDS);
+    // recordMngr.init(MAX_NUMBER_OF_RECORDS);
+    recordMngr.init(100);
     cout << "size: " << recordMngr.getSize() << endl;
 
     #ifdef SIMULATION

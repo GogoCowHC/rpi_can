@@ -79,6 +79,7 @@ CANItem mcp2515_can_receive(void)
 
     f.can_id = frame.can_id;
     f.dlc = frame.can_dlc;
+    f.direction = "Rx"; // Assuming all frames are received
     f.data.resize(frame.can_dlc);
     memcpy(f.data.data(), frame.data, frame.can_dlc);
 
