@@ -26,7 +26,7 @@ int main()
 {
     RecordMngr& recordMngr = RecordMngr::getInstance();
     // recordMngr.init(MAX_NUMBER_OF_RECORDS);
-    recordMngr.init(100);
+    recordMngr.init(1000);
     cout << "size: " << recordMngr.getSize() << endl;
 
     #ifdef SIMULATION
