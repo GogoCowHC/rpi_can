@@ -1,6 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+
+#include <string.h>
+#include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
