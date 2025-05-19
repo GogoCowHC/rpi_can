@@ -195,7 +195,7 @@ bool RecordMngr::writeCANFile()
 
 bool RecordMngr::writeGPSFile()
 {
-    isCANWriting = true;
+    isGPSWriting = true;
 
     ensureDirectoryExists(LOG_DIRECTORY);
     std::string filename = generateFilename(LOG_DIRECTORY, LOG_FILE_GPS_EXT);
