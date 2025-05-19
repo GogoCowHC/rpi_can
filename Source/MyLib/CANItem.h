@@ -18,6 +18,10 @@ class CANItem
         ~CANItem() {};
 
         void print();
+
 };
+
+void setup_can_interface(const char *interface, int bitrate);
+CANItem mcp2515_can_receive(void);
 
 #endif //_CAN_ITEM_H_

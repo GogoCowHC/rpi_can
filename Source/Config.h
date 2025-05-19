@@ -1,7 +1,7 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-#define SIMULATION
+// #define SIMULATION
 #define SIMULATION_DURATION 1
 
 #define MAX_NUMBER_OF_RECORDS 100000
@@ -9,7 +9,7 @@
 #ifdef SIMULATION
 #define LOG_DIRECTORY "./Logs"
 #else
-#define LOG_DIRECTORY "???"
+#define LOG_DIRECTORY "./Logs"
 #endif
 
 #define LOG_FILE_CAN_EXT ".asc"

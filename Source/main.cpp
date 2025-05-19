@@ -19,6 +19,9 @@ void simulate_receive_CAN_frame(RecordMngr& recordMngr, int minutes);
 void simulate_receive_GPS_data(RecordMngr& recordMngr, int minutes);
 #endif //SIMULATION
 
+void rpi_receive_CAN_frame(RecordMngr& recordMngr);
+void rpi_receive_GPS_data(RecordMngr& recordMngr);
+
 int main()
 {
     RecordMngr& recordMngr = RecordMngr::getInstance();
@@ -45,7 +48,22 @@ int main()
     #else
 
     cout << "========== HARDWARE ==========" << endl;
-    
+    setup_can_interface("can0", 500000);
+
+
+    std::thread t_CAN(rpi_receive_CAN_frame, std::ref(recordMngr));
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    std::thread t_GPS(rpi_receive_GPS_data, std::ref(recordMngr));
+
+    t_CAN.join();
+    t_GPS.join();
+
+    while (recordMngr.isWritingFile())
+    {
+        cout << "Wait for writing file..." << endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+
     #endif
 
     return 0;
@@ -140,3 +158,31 @@ void simulate_receive_GPS_data(RecordMngr& recordMngr, int minutes)
     std::cout << "Thread finished after " << minutes << " minutes" << endl;
 }
 #endif //SIMULATION
+
+void rpi_receive_CAN_frame(RecordMngr& recordMngr)
+{
+    CANItem f;
+
+    while (true)
+    {
+        f = mcp2515_can_receive();
+        if (f.can_id != 0)
+        {
+            recordMngr.addCANRecord(f.channel, f.can_id, f.direction, f.dlc, f.data);
+            
+        }
+    }
+    
+   
+
+}
+
+
+void rpi_receive_GPS_data(RecordMngr& recordMngr)
+{
+    while (true)
+    {
+        // recordMngr.addGPSRecord(gpsData);
+    }
+
+}
