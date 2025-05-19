@@ -181,7 +181,7 @@ void rpi_receive_GPS_data(RecordMngr& recordMngr)
 {
     while (true)
     {
-        recordMngr.addGPSRecord(gpsData);
+        recordMngr.addGPSRecord(rpi_getGPSData);
     }
 
 }
