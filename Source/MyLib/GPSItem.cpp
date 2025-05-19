@@ -23,8 +23,7 @@ std::string rpi_getGPSData(void)
 {
     std::ostringstream oss;
     int fd;
-    char c;
-    unsigned int index = 0;
+    
     printf("Rpi is receiving : \n");      
 
     if((fd = serialOpen ("/dev/ttyAMA0", 9600)) < 0 ){
