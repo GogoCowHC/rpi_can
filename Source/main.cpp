@@ -174,8 +174,6 @@ void rpi_receive_CAN_frame(RecordMngr& recordMngr)
         }
     }
     
-   
-
 }
 
 
@@ -183,7 +181,7 @@ void rpi_receive_GPS_data(RecordMngr& recordMngr)
 {
     while (true)
     {
-        // recordMngr.addGPSRecord(gpsData);
+        recordMngr.addGPSRecord(gpsData);
     }
 
 }

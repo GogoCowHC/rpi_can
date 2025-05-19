@@ -15,4 +15,6 @@ class GPSItem
         void print();
 };
 
+std::string rpi_getGPSData(void);
+
 #endif //_GPS_ITEM_H_
