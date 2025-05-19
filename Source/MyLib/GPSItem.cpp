@@ -164,7 +164,8 @@ std::string rpi_getGPSData(void)
         
     }else{
         do{
-            oss << serialGetchar(fd);            
+            char c = static_cast<char>(serialGetchar(fd));
+            oss << c;
         }while(serialDataAvail(fd));
         
         serialClose(fd);
