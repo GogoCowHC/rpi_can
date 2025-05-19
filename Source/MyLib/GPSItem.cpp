@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
@@ -23,7 +24,7 @@ std::string rpi_getGPSData(void)
 {
     std::ostringstream oss;
     int fd;
-    
+
     printf("Rpi is receiving : \n");      
 
     if((fd = serialOpen ("/dev/ttyAMA0", 9600)) < 0 ){
